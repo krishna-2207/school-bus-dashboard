@@ -1,0 +1,7 @@
+{
+  "name": "Copy of School Bus Safety & Tracking Dashboard",
+  "description": "A comprehensive web-based dashboard for real-time monitoring of school bus safety, including live tracking, speed monitoring, and emergency management.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
