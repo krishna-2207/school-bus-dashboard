@@ -1,0 +1,55 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // ════════════════════════════════════════════════════════
+    // HELPER FUNCTIONS
+    // ════════════════════════════════════════════════════════
+    
+    // Check if user is logged in
+    function isLoggedIn() {
+      return request.auth != null;
+    }
+    
+    // ════════════════════════════════════════════════════════
+    // HACKATHON RULES (Simple but secure)
+    // Anyone logged in can read, only authenticated users can write
+    // ════════════════════════════════════════════════════════
+    
+    // BUSES COLLECTION
+    match /buses/{busId} {
+      allow read: if isLoggedIn();
+      allow write: if isLoggedIn();
+    }
+    
+    // ROUTES COLLECTION
+    match /routes/{routeId} {
+      allow read: if isLoggedIn();
+      allow write: if isLoggedIn();
+    }
+    
+    // DRIVERS COLLECTION
+    match /drivers/{driverId} {
+      allow read: if isLoggedIn();
+      allow write: if isLoggedIn();
+    }
+    
+    // ADMINS COLLECTION
+    match /admins/{adminId} {
+      allow read: if isLoggedIn();
+      allow write: if isLoggedIn();
+    }
+    
+    // LIVE LOCATIONS COLLECTION (Most Important!)
+    match /liveLocations/{busId} {
+      allow read: if isLoggedIn();
+      allow write: if isLoggedIn();
+    }
+    
+    // ALERTS COLLECTION
+    match /alerts/{alertId} {
+      allow read: if isLoggedIn();
+      allow write: if isLoggedIn();
+    }
+  }
+}
